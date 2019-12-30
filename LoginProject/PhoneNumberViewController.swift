@@ -28,8 +28,18 @@ class PhoneNumberViewController: UIViewController {
     
     @IBAction func sendVerificationCodeButtonPressed(_ sender: Any) {
         
+        var temp:String = phoneTextfield.text!
+        
+        if(temp.count != 11){
+            let alert = UIAlertController(title: "Error", message: "Invalid phone number!", preferredStyle: .alert)
+                       alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+
+                       self.present(alert, animated: true)
+        }
+        else{
         randomInt = Int.random(in: 1000..<9999)
-             print(randomInt)
+        print(randomInt)
+        }
     }
     
     

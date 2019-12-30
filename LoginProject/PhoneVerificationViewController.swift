@@ -28,6 +28,20 @@ class PhoneVerificationViewController: UIViewController {
     
     @IBAction func signupButtonPressed(_ sender: Any) {
         
+        if(usernameTextfield.text != "" && passwordTextfield.text == password2Textfield.text)
+        {
+            self.performSegue(withIdentifier: "signupToDashboard", sender: self)
+
+            
+        }
+        else{
+            
+            let alert = UIAlertController(title: "Error", message: "Incomplete form!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+
+            self.present(alert, animated: true)
+
+        }
         
     }
     
