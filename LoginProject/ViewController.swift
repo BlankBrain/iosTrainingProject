@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     @IBOutlet weak var usernameTextfield: UITextField!
     @IBOutlet weak var login_Label: UILabel!
     @IBOutlet weak var passwordField: UITextField!
@@ -31,22 +32,42 @@ class ViewController: UIViewController {
         
 
     }
+    func validateEmail(enteredEmail:String) -> Bool {
+
+          let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+          let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+          return emailPredicate.evaluate(with: enteredEmail)
+
+      }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
         
-        if(usernameTextfield.text=="mehedi@outlook.com"&&passwordField.text=="0000")
-        {
-            self.performSegue(withIdentifier: "loginToDashboard", sender: self)
+        let validation:Bool = validateEmail(enteredEmail: usernameTextfield.text!)
+        
+        if (validation==true) {
+            
+            if(usernameTextfield.text=="mehedi@outlook.com"&&passwordField.text=="0000")
+                  {
+                      self.performSegue(withIdentifier: "loginToDashboard", sender: self)
+                  }
+                  else{
+                      let alert = UIAlertController(title: "Failed to log in", message: "Invalid Email/Password!", preferredStyle: .alert)
+                      alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                      self.present(alert, animated: true)
+                      
+                      
+                      print("invalid username/password")
+                  }
         }
-        else{
-            let alert = UIAlertController(title: "Failed to log in", message: "Invalid Username/Password!", preferredStyle: .alert)
+        else {
+            let alert = UIAlertController(title: "Incomplete form", message: "Invalid Email address!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-
             self.present(alert, animated: true)
-            
-            
-            print("invalid username/password")
         }
+        
+        
+        
+      
     }
     
     @IBAction func signupButtonPressed(_ sender: Any) {
@@ -54,6 +75,11 @@ class ViewController: UIViewController {
         self.performSegue(withIdentifier: "loginToPhone", sender: self)
 
     }
+    
+
+    
+  
+
     
 }
 

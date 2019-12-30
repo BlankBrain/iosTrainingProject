@@ -25,15 +25,21 @@ class PhoneNumberViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    func validate(value: String) -> Bool {
+        let PHONE_REGEX = "^\\d{11}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result =  phoneTest.evaluate(with: value)
+        return result
+    }
     
     @IBAction func sendVerificationCodeButtonPressed(_ sender: Any) {
         
-        var temp:String = phoneTextfield.text!
+        let temp:Bool = validate(value: phoneTextfield.text!)
         
-        if(temp.count != 11){
+        
+        if(temp != true){
             let alert = UIAlertController(title: "Error", message: "Invalid phone number!", preferredStyle: .alert)
-                       alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                        self.present(alert, animated: true)
         }
         else{
