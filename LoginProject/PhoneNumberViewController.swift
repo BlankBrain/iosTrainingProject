@@ -10,13 +10,45 @@ import UIKit
 
 class PhoneNumberViewController: UIViewController {
 
+    var randomInt:Int = 0
+    @IBOutlet weak var phoneTextfield: UITextField!
+    
+    @IBOutlet weak var verifyButton: UIStackView!
+    
+    @IBOutlet weak var submitButton: UIButton!
+    
+    
+    @IBOutlet weak var inputCodeTextfield: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func sendVerificationCodeButtonPressed(_ sender: Any) {
+        
+        randomInt = Int.random(in: 1000..<9999)
+             print(randomInt)
+    }
+    
+    
+    @IBAction func submitButtonPressed(_ sender: Any) {
+        
+        if(randomInt==0)
+        {
+            let alert = UIAlertController(title: "Error", message: "Wrong verification Code!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
 
+            self.present(alert, animated: true)
+        }
+        else{
+             self.performSegue(withIdentifier: "phoneToForm", sender: self)
+        }
+        
+        
+    }
+    
     /*
     // MARK: - Navigation
 

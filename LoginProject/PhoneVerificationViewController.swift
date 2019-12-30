@@ -9,7 +9,14 @@
 import UIKit
 
 class PhoneVerificationViewController: UIViewController {
-
+    @IBOutlet weak var usernameTextfield: UITextField!
+    
+    @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var password2Textfield: UITextField!
+    
+    @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,6 +24,13 @@ class PhoneVerificationViewController: UIViewController {
     }
     
 
+    
+    
+    @IBAction func signupButtonPressed(_ sender: Any) {
+        
+        
+    }
+    
     /*
     // MARK: - Navigation
 
