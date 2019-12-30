@@ -36,22 +36,23 @@ class PhoneNumberViewController: UIViewController {
         
         let temp:Bool = validate(value: phoneTextfield.text!)
         
-        
-        if(temp != true){
-            let alert = UIAlertController(title: "Error", message: "Invalid phone number!", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-                       self.present(alert, animated: true)
+        if(temp == true){
+         randomInt = Int.random(in: 1000..<9999)
+         print(randomInt)
         }
+            
         else{
-        randomInt = Int.random(in: 1000..<9999)
-        print(randomInt)
+      
+        let alert = UIAlertController(title: "Error", message: "Invalid phone number!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
         }
     }
     
     
     @IBAction func submitButtonPressed(_ sender: Any) {
         
-        if(randomInt==0)
+        if(randomInt !=  (inputCodeTextfield.text! as NSString).integerValue)
         {
             let alert = UIAlertController(title: "Error", message: "Wrong verification Code!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))

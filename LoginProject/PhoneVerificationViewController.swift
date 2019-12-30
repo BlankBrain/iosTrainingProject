@@ -24,21 +24,40 @@ class PhoneVerificationViewController: UIViewController {
     }
     
 
-    
+    func validateEmail(enteredEmail:String) -> Bool {
+
+           let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+           let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+           return emailPredicate.evaluate(with: enteredEmail)
+
+       }
     
     @IBAction func signupButtonPressed(_ sender: Any) {
         
-        if(usernameTextfield.text != "" && passwordTextfield.text == password2Textfield.text)
+        let validation:Bool = validateEmail(enteredEmail: usernameTextfield.text!)
+
+        if(validation == true && passwordTextfield.text == password2Textfield.text && password2Textfield.text != "")
         {
             self.performSegue(withIdentifier: "signupToDashboard", sender: self)
 
             
         }
+        else if( validation == true && passwordTextfield.text != password2Textfield.text)
+        {
+            let alert = UIAlertController(title: "Error", message: "Passwords Don't Match!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+        else if( validation == false && passwordTextfield.text == password2Textfield.text)
+        {
+            let alert = UIAlertController(title: "Error", message: "Invalid Email !", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
         else{
             
             let alert = UIAlertController(title: "Error", message: "Incomplete form!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-
             self.present(alert, animated: true)
 
         }
