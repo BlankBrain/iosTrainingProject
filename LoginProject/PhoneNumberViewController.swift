@@ -69,6 +69,7 @@ class PhoneNumberViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let phoneVerificationViewController = segue.destination as? PhoneVerificationViewController else {return}
         phoneVerificationViewController.phoneNumber = phoneTextfield.text
+
         
     }
     
