@@ -78,7 +78,12 @@ class ViewController: UIViewController {
     
 
     
-  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      guard let dashboardViewController = segue.destination as? DashboardViewController else {return}
+  //    dashboardViewController.phoneNumber = "Phone Number " + phoneNumber
+      dashboardViewController.email = "Email " + usernameTextfield.text!
+      
+  }
 
     
 }

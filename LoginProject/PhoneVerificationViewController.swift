@@ -9,6 +9,8 @@
 import UIKit
 
 class PhoneVerificationViewController: UIViewController {
+    var phoneNumber:String!
+    
     @IBOutlet weak var usernameTextfield: UITextField!
     
     @IBOutlet weak var passwordTextfield: UITextField!
@@ -21,8 +23,13 @@ class PhoneVerificationViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        let alert = UIAlertController(title: "Success!", message: phoneNumber + " Phone number is verified", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
 
     func validateEmail(enteredEmail:String) -> Bool {
 
@@ -61,6 +68,13 @@ class PhoneVerificationViewController: UIViewController {
             self.present(alert, animated: true)
 
         }
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let dashboardViewController = segue.destination as? DashboardViewController else {return}
+        dashboardViewController.phoneNumber = "Phone Number " + phoneNumber
+        dashboardViewController.email = "Email " + usernameTextfield.text!
         
     }
     

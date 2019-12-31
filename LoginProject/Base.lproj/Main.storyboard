@@ -99,8 +99,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="s2y-uT-KWp">
                                 <rect key="frame" x="53" y="223" width="308" height="396"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zM0-PY-Nfn">
-                                        <rect key="frame" x="129.5" y="0.0" width="49.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XfC-YN-n5G">
+                                        <rect key="frame" x="133.5" y="0.0" width="41" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4r2-Pr-Lw5">
+                                        <rect key="frame" x="96.5" y="184" width="115" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -138,6 +144,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CwF-m9-9I2"/>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="XfC-YN-n5G" id="k3N-Pf-k8L"/>
+                        <outlet property="phoneNumberLabel" destination="4r2-Pr-Lw5" id="4Jx-aN-gwD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NFA-6W-wF5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -313,6 +323,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="dXd-Pd-hlV"/>
         <segue reference="9VN-oe-MSH"/>
-        <segue reference="XXl-uQ-PgX"/>
+        <segue reference="eHM-pT-0cr"/>
     </inferredMetricsTieBreakers>
 </document>

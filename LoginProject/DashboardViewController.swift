@@ -9,13 +9,22 @@
 import UIKit
 
 class DashboardViewController: UIViewController {
-
+    var email:String!
+    var phoneNumber:String!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        emailLabel.text = email
+        phoneNumberLabel.text = phoneNumber
+        
+    }
 
     /*
     // MARK: - Navigation

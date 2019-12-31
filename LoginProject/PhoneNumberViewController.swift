@@ -56,24 +56,27 @@ class PhoneNumberViewController: UIViewController {
         {
             let alert = UIAlertController(title: "Error", message: "Wrong verification Code!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-
             self.present(alert, animated: true)
         }
         else{
+            
              self.performSegue(withIdentifier: "phoneToForm", sender: self)
         }
         
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let phoneVerificationViewController = segue.destination as? PhoneVerificationViewController else {return}
+        phoneVerificationViewController.phoneNumber = phoneTextfield.text
+        
+    }
+    
     /*
-    // MARK: - Navigation
+    // MARK : - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
+    
     */
 
 }
